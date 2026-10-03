@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keystone BIM</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a6cff'/%3E%3Cpath d='M12 4l7 4v8l-7 4-7-4V8z' fill='none' stroke='white' stroke-width='1.6'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <header id="ribbon"></header>
+    <div id="optionsBar"></div>
+    <div id="workspace">
+      <aside id="sidebar">
+        <section id="properties" class="panel"></section>
+        <section id="browser" class="panel"></section>
+      </aside>
+      <main id="viewArea">
+        <div id="viewHeader">
+          <div id="viewSwitch" class="seg"></div>
+          <span class="spacer"></span>
+          <span class="muted keys">Pan: middle/right-drag · Zoom: wheel · Esc: cancel · Shortcuts: WA DR WN FL CL RM GR · ZF fit</span>
+        </div>
+        <div id="viewPanes" data-mode="split">
+          <div id="planPane" class="pane">
+            <canvas id="planCanvas" tabindex="0"></canvas>
+            <div class="pane-label"></div>
+            <div class="pane-tools"><button id="fitPlan" type="button" title="Zoom to fit (ZF)"></button></div>
+          </div>
+          <div id="pane3d" class="pane">
+            <div class="pane-label">{3D}</div>
+            <div class="pane-tools">
+              <button type="button" data-view="iso" title="Isometric">Iso</button>
+              <button type="button" data-view="top" title="Top">Top</button>
+              <button type="button" data-view="front" title="South">S</button>
+              <button type="button" data-view="right" title="East">E</button>
+              <button type="button" data-view="back" title="North">N</button>
+              <button type="button" data-view="left" title="West">W</button>
+              <button type="button" data-view="fit" title="Zoom to fit">Fit</button>
+              <button type="button" data-view="walk" class="walk-entry" title="Walk through the rooms (WK)">🚶 Walk</button>
+            </div>
+          </div>
+          <div id="schedulePane" class="pane"></div>
+        </div>
+      </main>
+    </div>
+    <footer id="statusBar"></footer>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

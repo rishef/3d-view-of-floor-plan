@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keystone BIM Tests</title>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" } }
+  </script>
+  <style>
+    body { font: 14px/1.5 system-ui, sans-serif; margin: 24px; color: #1d2126; background: #fff; }
+    h1 { font-size: 18px; margin: 0 0 12px; }
+    .row { padding: 4px 0; border-bottom: 1px solid #eef0f3; }
+    .ok { color: #1a7f37; }
+    .fail { color: #cf222e; }
+    .err { color: #6e7781; font-size: 12px; margin-left: 22px; }
+    #summary { margin-top: 14px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Keystone BIM — core engine tests</h1>
+  <div id="out"></div>
+  <div id="summary">Running…</div>
+  <script type="module">
+    import { run } from './core.test.js';
+    const out = document.getElementById('out');
+    const { passed, total } = await run((ok, name, err) => {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `<span class="${ok ? 'ok' : 'fail'}">${ok ? '✓' : '✗'}</span> `;
+      row.append(name);
+      if (err) {
+        const e = document.createElement('div');
+        e.className = 'err';
+        e.textContent = err;
+        row.append(e);
+      }
+      out.append(row);
+    });
+    const s = document.getElementById('summary');
+    s.textContent = `${passed}/${total} passed`;
+    s.className = passed === total ? 'ok' : 'fail';
+    document.title = `${passed === total ? 'PASS' : 'FAIL'} ${passed}/${total}`;
+  </script>
+</body>
+</html>

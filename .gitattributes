@@ -1,0 +1,5 @@
+# Normalise line endings so Windows and macOS/Linux clones see the same files
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary

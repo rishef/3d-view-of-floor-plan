@@ -1,0 +1,17 @@
+# OS / OneDrive clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node (if a toolchain is added later)
+node_modules/
+dist/
+
+# Local assistant settings (keep the shared launch config)
+.claude/settings.local.json

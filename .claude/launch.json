@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "keystone-bim",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["serve.py", "8765"],
+      "port": 8765
+    }
+  ]
+}
